@@ -29,7 +29,7 @@ pnpm install
 
 ```bash
 # 创建 Python 项目
-poetry new backend
+poetry new --src backend
 
 # 进入后端目录
 cd backend
