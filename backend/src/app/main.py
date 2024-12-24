@@ -17,6 +17,9 @@ def create_app() -> FastAPI:
     async def root():
         return {"message": f"Welcome to {settings.app_name}"}
 
+    @app.get("/api/hello")
+    async def hello():
+        return {"message": "Hello World"}
     return app
 
 app = create_app()
