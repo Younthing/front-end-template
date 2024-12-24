@@ -4,12 +4,17 @@ version = "0.1.0"
 description = ""
 authors = ["younthing <fanxingfu3344@gmail.com>"]
 readme = "README.md"
-packages = [{ include = "back", from = "src" }]
+packages = [{ include = "app", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 fastapi = { extras = ["all"], version = "^0.115.6" }
+pydantic-settings = ">=2.0.3"
+python-dotenv = ">=1.0.0"
 
+[tool.poetry.scripts]
+dev = "src.app.__main__:main"
+start = "src.app.__main__:main"
 
 [build-system]
 requires = ["poetry-core"]
