@@ -1,0 +1,43 @@
+repos:
+  # 代码格式化：Black
+  - repo: https://github.com/psf/black
+    rev: 23.3.0 # 使用你想要的 black 版本
+    hooks:
+      - id: black
+        language_version: python3 # 根据你的项目指定 Python 版本
+
+  # 代码风格检查：Flake8
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0 # 使用你想要的 flake8 版本
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-bugbear # 推荐的 flake8 插件
+        exclude: |
+          (?x)^(
+              migrations/|
+              \.venv/
+          )$
+
+  # 自动导入排序：isort
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0 # 使用你想要的 isort 版本
+    hooks:
+      - id: isort
+
+  # 通用检查：pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-yaml # 检查 YAML 文件语法
+      - id: end-of-file-fixer # 确保文件以换行符结尾
+      - id: trailing-whitespace # 删除行尾空格
+      - id: check-added-large-files # 检查是否添加了大文件
+      - id: check-merge-conflict # 检查是否存在合并冲突标记
+
+  # 提交信息规范检查：Commitizen (可选但强烈推荐)
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.13.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
